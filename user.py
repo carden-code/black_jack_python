@@ -14,3 +14,7 @@ class User:
             self.money -= bet
         else:
             raise ValueError('Не достаточно средств.')
+
+    def take_card(self, deck):
+        card = deck.deal_cards()
+        self.cards.append(card)
