@@ -3,3 +3,4 @@ class User:
         self.name = name
         self.cards = []
         self.money = 0
+
