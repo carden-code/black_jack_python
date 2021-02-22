@@ -6,6 +6,7 @@ class User:
         self.name = name
         self.cards = []
         self.money = 100
+        self.sum_cards = 0
 
     def place_bet_in_bank(self):
         bet = 10
@@ -18,3 +19,7 @@ class User:
     def take_card(self, deck):
         card = deck.deal_cards()
         self.cards.append(card)
+
+    def calculate_amount_points(self):
+        for card in self.cards:
+            self.sum_cards += card.values
