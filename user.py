@@ -1,6 +1,3 @@
-from bank import Bank
-
-
 class User:
     def __init__(self, name='User'):
         self.name = name
@@ -8,10 +5,9 @@ class User:
         self.money = 100
         self.sum_cards = 0
 
-    def place_bet_in_bank(self):
-        bet = 10
+    def place_bet_in_bank(self, bank, bet):
         if self.money >= bet:
-            Bank.add_money(bet)
+            bank.add_money(bet)
             self.money -= bet
         else:
             raise ValueError('Не достаточно средств.')

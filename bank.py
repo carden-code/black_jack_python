@@ -1,6 +1,10 @@
 class Bank:
-    money = 0
+    def __init__(self):
+        self.money = 0
 
-    @classmethod
-    def add_money(cls, money):
-        cls.money += money
+    def add_money(self, money):
+        self.money += money
+
+    def make_payment(self, player):
+        player.money += self.money
+        self.money = 0
