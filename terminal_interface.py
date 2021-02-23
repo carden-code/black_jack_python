@@ -20,4 +20,8 @@ class TerminalInterface:
         while True:
             print(f'Банк: {self.game.bank.money}')
             print(f'Ваши деньги: {self.game.user.money}')
-            print(f'Ваши карты: {self.game.user.cards}')
+            print('Ваши карты:')
+            print(*self.game.user.cards)
+            d = input('Введите - 0')  # Временно для тестов.
+            if d == '0':
+                break

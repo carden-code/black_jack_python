@@ -8,3 +8,6 @@ class BlackJack:
         self.user = User()
         self.game = Game(self.user)
         TerminalInterface(self.game)
+
+
+BlackJack()
