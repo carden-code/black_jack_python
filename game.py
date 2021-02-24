@@ -5,6 +5,7 @@ from bank import Bank
 
 class Game:
     BORDERLINE = '-' * 50
+    NEWLINE = "\n" * 2
 
     def __init__(self, user):
         self.user = user
@@ -25,6 +26,17 @@ class Game:
         self.dealer.place_bet_in_bank(bank=self.bank, bet=self.bet)
         self.user.calculate_amount_points()
         self.dealer.calculate_amount_points()
+
+    def start(self):
+        name = input('Введите ваше имя: ').strip()
+        self.user.name = name
+        self.start_game()
+
+    def start_game(self):
+        self.new_round()
+        print(self.NEWLINE)
+        print(f'{self.user.name} Добро пожаловать в игру BlackJack')
+        print(self.NEWLINE)
 
     def determine_winner(self):
         if self.user.sum_cards > 21:
@@ -53,3 +65,6 @@ class Game:
             self.user.take_card(self.deck)
         elif menu_item == '2':
             self.dealer.take_card(self.deck)
+            winner = self.determine_winner()
+            self.payout_to_winner()
+            print(winner.name)
