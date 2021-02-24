@@ -22,6 +22,11 @@ class TerminalInterface:
             print(f'Ваши деньги: {self.game.user.money}')
             print('Ваши карты:')
             print(*self.game.user.cards)
+            print('Карты диллера:')
+            print(*self.game.dealer.cards)
+            self.game.main_menu_items()
+            menu_item = input()
+            self.game.selected(menu_item)
             d = input('Введите - 0')  # Временно для тестов.
             if d == '0':
                 break

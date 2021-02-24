@@ -4,6 +4,8 @@ from bank import Bank
 
 
 class Game:
+    BORDERLINE = '-' * 50
+
     def __init__(self, user):
         self.user = user
         self.dealer = Dealer()
@@ -37,3 +39,17 @@ class Game:
     def payout_to_winner(self):
         winner = self.determine_winner()
         self.bank.make_payment(winner)
+
+    def main_menu_items(self):
+        messages = ['Выберете действие, введя номер из списка.',
+                    self.BORDERLINE,
+                    '1 - Взять ещё карту.',
+                    '2 - Пропустить.']
+        for item in messages:
+            print(item)
+
+    def selected(self, menu_item):
+        if menu_item == '1':
+            self.user.take_card(self.deck)
+        elif menu_item == '2':
+            self.dealer.take_card(self.deck)
