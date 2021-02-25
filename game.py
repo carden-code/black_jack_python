@@ -1,7 +1,6 @@
 from dealer import Dealer
 from deck import Deck
 from bank import Bank
-from black_jack import BlackJack
 
 
 class Game:
@@ -44,9 +43,9 @@ class Game:
             return self.dealer
         elif self.dealer.sum_cards > 21:
             return self.user
-        elif self.user.sum_cards < self.dealer.sum_cards:
-            return self.dealer
-        elif self.dealer.sum_cards < self.user.sum_cards:
+        elif self.dealer.sum_cards < self.user.sum_cards <= 21:
+            return self.user
+        elif self.user.sum_cards < self.dealer.sum_cards <= 21:
             return self.user
         elif self.user.sum_cards == self.dealer.sum_cards:
             return None
@@ -112,8 +111,3 @@ class Game:
                     self.BORDERLINE]
         for item in messages:
             print(item)
-
-    @staticmethod
-    def selected_3(menu):
-        if menu == '1':
-            BlackJack()
