@@ -46,7 +46,7 @@ class Game:
         elif self.dealer.sum_cards < self.user.sum_cards <= 21:
             return self.user
         elif self.user.sum_cards < self.dealer.sum_cards <= 21:
-            return self.user
+            return self.dealer
         elif self.user.sum_cards == self.dealer.sum_cards:
             return None
 

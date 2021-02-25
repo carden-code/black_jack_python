@@ -12,7 +12,7 @@ class TerminalInterface:
             print('Ваши карты:')
             print(*self.game.user.cards, f'(оч. {self.game.user.sum_cards})')
 
-            if self.game.bank != 0:
+            if self.game.bank.money != 0:
                 print('Карты диллера:')
                 print('****')
                 print('Сумма очков: **')
@@ -21,7 +21,7 @@ class TerminalInterface:
                 print('Карты диллера:')
                 print(*self.game.dealer.cards, f'(оч. {self.game.dealer.sum_cards})')
 
-            if self.game.bank != 0:
+            if self.game.bank.money != 0:
                 self.game.main_menu_items()
                 menu_item = input().strip()
                 self.game.selected(menu_item)
