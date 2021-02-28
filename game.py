@@ -80,20 +80,20 @@ class Game:
                 winner = self.determine_winner()
                 self.payout_to_winner()
                 if winner:
-                    print(winner.name)
+                    print(f'{winner.name} - Победил! Выигрыш: {self.bet * 2} у.е.')
                 else:
-                    print('Ничья')
+                    print(f'Ничья! Ваш выигрыш: {self.bet} у.е.')
         elif menu_item == '2':
             while self.dealer.sum_cards <= 17:
                 self.dealer.take_card(self.deck)
             winner = self.determine_winner()
             self.payout_to_winner()
             if winner:
-                print(winner.name)
+                print(f'{winner.name} - Победил! Выигрыш: {self.bet * 2} у.е.')
             else:
-                print(self.user.sum_cards)
-                print(self.dealer.sum_cards)
-                print('Ничья')
+                print(f'Ваши очки: {self.user.sum_cards}')
+                print(f'Очки диллера: {self.dealer.sum_cards}')
+                print(f'Ничья! Возврат ставки: {self.bet} у.е.')
 
     def menu_2(self):
         messages = ['Выберите действие, введя номер из списка: ',
