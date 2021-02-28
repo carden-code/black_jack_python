@@ -16,7 +16,6 @@ class TerminalInterface:
                 print('Карты диллера:')
                 print('****')
                 print('Сумма очков: **')
-                # print(*self.game.dealer.cards, f'(оч. {self.game.dealer.sum_cards})')
             else:
                 print('Карты диллера:')
                 print(*self.game.dealer.cards, f'(оч. {self.game.dealer.sum_cards})')
@@ -32,4 +31,6 @@ class TerminalInterface:
             elif len(self.game.deck.cards) < 52:
                 self.game.menu_2()
                 menu_item = input().strip()
+                if menu_item == '0':
+                    break
                 self.game.selected_2(menu_item)

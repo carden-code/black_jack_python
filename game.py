@@ -27,6 +27,12 @@ class Game:
         self.user.calculate_amount_points()
         self.dealer.calculate_amount_points()
 
+    def new_game(self):
+        self.bank.money = 0
+        self.user.money = 100
+        self.dealer.money = 100
+        self.start_game()
+
     def start(self):
         name = input('Введите ваше имя: ').strip()
         self.user.name = name
@@ -111,3 +117,7 @@ class Game:
                     self.BORDERLINE]
         for item in messages:
             print(item)
+
+    def selected_3(self, menu):
+        if menu == '1':
+            self.new_game()
