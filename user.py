@@ -36,4 +36,3 @@ class User:
             for card in self.cards[::-1]:
                 if card.is_ace():
                     self.sum_cards -= 10
-
