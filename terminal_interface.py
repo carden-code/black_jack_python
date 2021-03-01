@@ -6,6 +6,10 @@ class TerminalInterface:
         self.game = game
         self.game.start()
 
+        print(self.NEWLINE)
+        print(f'{self.game.user.name} Добро пожаловать в игру BlackJack')
+        print(self.NEWLINE)
+
         while True:
             print(f'Банк: {self.game.bank.money}')
             print(f'Ваши деньги: {self.game.user.money}')

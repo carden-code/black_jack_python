@@ -31,20 +31,19 @@ class Game:
         self.bank.money = 0
         self.user.money = 100
         self.dealer.money = 100
-        self.start_game()
+        self.new_round()
 
     def start(self):
         name = input('Введите ваше имя: ').strip()
         self.user.name = name
-        self.start_game()
-
-    def start_game(self):
         self.new_round()
-        print(self.NEWLINE)
-        print(f'{self.user.name} Добро пожаловать в игру BlackJack')
-        print(self.NEWLINE)
 
+    # Возвращает победителя.
     def determine_winner(self):
+        if self.user.is_two_ace() and not self.dealer.is_two_ace():
+            return self.user
+        if self.dealer.is_two_ace() and not self.user.is_two_ace():
+            return self.dealer
         if self.user.sum_cards > 21:
             return self.dealer
         elif self.dealer.sum_cards > 21:
