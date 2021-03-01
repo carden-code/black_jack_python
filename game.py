@@ -14,6 +14,14 @@ class Game:
         self.bank = Bank()
         self.bet = 10
 
+    # Запрашивает имя игрока и запускает игру.
+    def start(self):
+        name = input('Введите ваше имя: ').strip()
+        self.user.name = name
+        self.new_round()
+
+    # Обновляет раунд.
+    # Создаёт новую колоду, обнудяет карты игроков, раздаёт новые карты игрокам, делает ставку и считает очки.
     def new_round(self):
         self.deck = Deck()
         self.user.cards = []
@@ -27,15 +35,11 @@ class Game:
         self.user.calculate_amount_points()
         self.dealer.calculate_amount_points()
 
+    # Обнуляет всё к исходному положению. И запускает игру снова.
     def new_game(self):
         self.bank.money = 0
         self.user.money = 100
         self.dealer.money = 100
-        self.new_round()
-
-    def start(self):
-        name = input('Введите ваше имя: ').strip()
-        self.user.name = name
         self.new_round()
 
     # Возвращает победителя.
@@ -55,6 +59,7 @@ class Game:
         elif self.user.sum_cards == self.dealer.sum_cards:
             return None
 
+    # Выплачивает деньги из банка победителю.
     def payout_to_winner(self):
         winner = self.determine_winner()
         bank_money = self.bank.make_payment()
