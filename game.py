@@ -81,23 +81,16 @@ class Game:
         if menu_item == '1':
             self.user.take_card(self.deck)
             if self.user.sum_cards > 21:
-                winner = self.determine_winner()
                 self.payout_to_winner()
-                if winner:
-                    print(f'{winner.name} - Победил! Выигрыш: {self.bet * 2} у.е.')
-                else:
-                    print(f'Ничья! Ваш выигрыш: {self.bet} у.е.')
+                return self.dealer
         elif menu_item == '2':
             while self.dealer.sum_cards <= 17:
                 self.dealer.take_card(self.deck)
             winner = self.determine_winner()
             self.payout_to_winner()
-            if winner:
-                print(f'{winner.name} - Победил! Выигрыш: {self.bet * 2} у.е.')
-            else:
-                print(f'Ваши очки: {self.user.sum_cards}')
-                print(f'Очки диллера: {self.dealer.sum_cards}')
-                print(f'Ничья! Возврат ставки: {self.bet} у.е.')
+            if not winner:
+                return
+            return winner
 
     def menu_2(self):
         messages = ['Выберите действие, введя номер из списка: ',

@@ -27,7 +27,13 @@ class TerminalInterface:
             if self.game.bank.money != 0:
                 self.game.main_menu_items()
                 menu_item = input().strip()
-                self.game.selected(menu_item)
+                winner = self.game.selected(menu_item)
+                if not winner:
+                    print(f'Ваши очки: {self.game.user.sum_cards}')
+                    print(f'Очки диллера: {self.game.dealer.sum_cards}')
+                    print(f'Ничья! Возврат ставки: {self.game.bet} у.е.')
+                else:
+                    print(f'{winner.name} - Победил! Выигрыш: {self.game.bet * 2} у.е.')
             elif not self.game.user.money or not self.game.dealer.money:
                 self.game.menu_3()
                 menu_item = input().strip()
