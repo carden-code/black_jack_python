@@ -18,8 +18,7 @@ class TerminalInterface:
 
             if self.game.bank.money != 0:
                 print('Карты диллера:')
-                print('****')
-                print('Сумма очков: **')
+                print('**** (оч. **)')
             else:
                 print('Карты диллера:')
                 print(*self.game.dealer.cards, f'(оч. {self.game.dealer.sum_cards})')
