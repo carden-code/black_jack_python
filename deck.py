@@ -2,6 +2,7 @@ from random import shuffle
 from card import Card
 
 
+# Класс Deck создаёт колоду из объектов класса Card, раздаёт карты игрокам.
 class Deck:
     def __init__(self):
         self.cards = []
