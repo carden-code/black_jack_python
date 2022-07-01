@@ -5,35 +5,36 @@ class User:
         self.money = 100
         self.sum_cards = 0
 
-    # Делает ставку в банк.
     def place_bet_in_bank(self, bank, bet):
+        """Делает ставку в банк."""
         if self.money >= bet:
             bank.add_money(bet)
             self.money -= bet
         else:
             raise ValueError('Не достаточно средств.')
 
-    # Добавляет карту в список и считает сумму очков.
     def take_card(self, deck):
+        """Добавляет карту в список и считает сумму очков."""
         card = deck.deal_cards()
         self.cards.append(card)
         self.calculate_amount_points()
 
-    # Проверка на наличие 2ух тузов при раздаче.
     def is_two_ace(self):
-        if not len(self.cards) == 2:
+        """Проверка на наличие 2ух тузов при раздаче."""
+        if len(self.cards) != 2:
             return False
         if self.cards[0].is_ace() and self.cards[-1].is_ace():
             return True
         return False
 
-    # Подсчитывает сумму очков карт на руках.
     def calculate_amount_points(self):
+        """Подсчитывает сумму очков карт на руках."""
         self.sum_cards = sum([card.values for card in self.cards])
         self.adjusting_card_points()
 
-    # Проверяет наличие тузов на руках и исходя из этого корректирует колличество очков.
     def adjusting_card_points(self):
+        """Проверяет наличие тузов на руках и исходя 
+            из этого корректирует колличество очков."""
         if self.is_two_ace():
             self.sum_cards = 21
             return

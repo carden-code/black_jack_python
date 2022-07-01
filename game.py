@@ -14,15 +14,16 @@ class Game:
         self.bank = Bank()
         self.bet = 10
 
-    # Запрашивает имя игрока и запускает игру.
     def start(self):
+        """Запрашивает имя игрока и запускает игру."""
         name = input('Введите ваше имя: ').strip()
         self.user.name = name
         self.new_round()
 
-    # Обновляет раунд.
-    # Создаёт новую колоду, обнудяет карты игроков, раздаёт новые карты игрокам, делает ставку и считает очки.
     def new_round(self):
+        """Обновляет раунд.
+            Создаёт новую колоду, обнудяет карты игроков,
+            раздаёт новые карты игрокам, делает ставку и считает очки."""
         self.deck = Deck()
         self.user.cards = []
         self.dealer.cards = []
@@ -35,15 +36,15 @@ class Game:
         self.user.calculate_amount_points()
         self.dealer.calculate_amount_points()
 
-    # Обнуляет всё к исходному положению. И запускает игру снова.
     def new_game(self):
+        """Обнуляет всё к исходному положению. И запускает игру снова."""
         self.bank.money = 0
         self.user.money = 100
         self.dealer.money = 100
         self.new_round()
 
-    # Возвращает победителя.
     def determine_winner(self):
+        """Возвращает победителя."""
         if self.user.is_two_ace() and not self.dealer.is_two_ace():
             return self.user
         if self.dealer.is_two_ace() and not self.user.is_two_ace():
@@ -59,8 +60,8 @@ class Game:
         elif self.user.sum_cards == self.dealer.sum_cards:
             return None
 
-    # Выплачивает деньги из банка победителю.
     def payout_to_winner(self):
+        """Выплачивает деньги из банка победителю."""
         winner = self.determine_winner()
         bank_money = self.bank.make_payment()
         if winner:

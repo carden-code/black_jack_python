@@ -7,18 +7,17 @@ class Card:
         self.rank = rank
         self.values = self.find_value(rank)
 
-    # Возвращает объект в понятном виде(в виде Значение Масть)
     def __repr__(self):
         return f"{self.rank}{self.suite}"
 
-    # Проверка на туза.
     def is_ace(self):
+        """Проверяет является ли карта тузом."""
         if self.rank == 'A':
             return True
         return False
 
-    # Определяет значение для карт(картинок).
     def find_value(self, rank):
+        """Определяет значение для карт(картинок)."""
         if self.is_ace():
             return 11
         elif rank in ('J', 'Q', 'K'):
