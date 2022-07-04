@@ -1,5 +1,5 @@
-- Blackjack Game
-# Проект "Blackjack"
+- BlackJack Game
+# Проект "BlackJack"
 
 - Консольная игра BlackJack
 
